@@ -19,6 +19,7 @@ use App\Http\Controllers\Product;
 Route::get('/', function () {
     return view('welcome');
 });
+
 // use component ,controller and a blade welcoma
 Route::get('/',[Product::class, 'index'])->name('welcome.index');
 Route::get('/home/{name?}',[HomeController::class, 'index'])->name('home.index');
