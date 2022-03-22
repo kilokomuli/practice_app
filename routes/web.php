@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Product;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,14 @@ Route::get('/home/{name?}',[HomeController::class, 'index'])->name('home.index')
 
 // using controllers to render a view
 Route::get('/users',[UsersController::class,'users']);
+
+// client Http request
+Route::get('/posts',[ClientController::class,'getAllPost'])->name('posts.getallpost');
+Route::get('/posts/{id}',[ClientController::class,'getPostById'])->name('posts'.'getpostbyid');
+Route::get('/add-post',[ClientController::class,'addPost'])->name('posts.addpost');
+Route::get('/update-post',[ClientController::class,'updatePost'])->name('posts.updatepost');
+Route::get('/delete-post/{id}',[ClientController::class,'deletePost'])->name('posts.delete');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
