@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\Product;
 use App\Http\Controllers\ClientController;
 
 /*
@@ -42,3 +43,7 @@ Route::get('/delete-post/{id}',[ClientController::class,'deletePost'])->name('po
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('/add-post',[PostController::class,'addPost']);
+Route::get('/add-comment/{id}',[PostController::class,'addComment']);
